@@ -28,11 +28,7 @@ jobs:
       - name: Build with Maven Wrapper
         run: ./mvnw -B package
 
-      - name: Copy Artifact
-        run: mkdir staging && cp target/*.jar staging
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v3
         with:
-          name: package
-          path: staging
+          name: my-artifact
+          path: target/webjar
