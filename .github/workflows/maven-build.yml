@@ -35,4 +35,9 @@ jobs:
       - name: Build Docker Image
         run: docker build -t petclinic-image-2.7.3 .
 
+      - name: Upload image
+        uses: ishworkh/docker-image-artifact-upload@v1
+        with:
+          image: "petclinic-image-2.7.3"
+
   
