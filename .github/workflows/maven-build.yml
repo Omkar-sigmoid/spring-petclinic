@@ -27,8 +27,6 @@ jobs:
       - name: Run Tests
         run: mvn -B test
 
-  name: SonarCloud
-
   sonar:
     needs: tests
     name: SonarCloud Anaylsis
