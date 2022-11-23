@@ -10,20 +10,33 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  runs-on: ubuntu-latest
+  
+  tests:
+  
+    name: Unit tests
+    #Job's steps
+    steps:
+      - uses: actions/checkout@v3
+      #Set up JDK 8
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: '8'
+          cache: maven
+      #Run Tests
+      - name: Run Tests
+        run: mvn -B test
 
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        java: [ '8' ]
+  build:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Set up JDK ${{matrix.java}}
-        uses: actions/setup-java@v3
+     #Set up JDK 8
+      - name: Set up JDK
+        uses: actions/setup-java@v1
         with:
-          java-version: ${{matrix.java}}
-          distribution: 'adopt'
+          java-version: '8'
           cache: maven
 
       - name: Build with Maven Wrapper
@@ -39,5 +52,7 @@ jobs:
         uses: ishworkh/docker-image-artifact-upload@v1
         with:
           image: "petclinic-image-2.7.3"
+
+
 
   
