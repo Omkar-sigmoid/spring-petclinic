@@ -59,7 +59,7 @@ jobs:
 
   build:
     needs: sonar
-    runs-on: ubuntu-latestgit 
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
      #Set up JDK 8
