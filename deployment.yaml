@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: petclinic-dep
+  name: petclinic-dep
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: petclinic-dep
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: petclinic-dep
+    spec:
+      containers:
+      - image: petclinic:latest
+        name: petclinic-image
+        imagePullPolicy: Never
+        port: 8080
+        resources: {}
+      
+status: {}
