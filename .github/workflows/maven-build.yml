@@ -10,10 +10,9 @@ on:
     branches: [ main ]
 
 jobs:
-  runs-on: ubuntu-latest
   
   tests:
-  
+    runs-on: ubuntu-latest
     name: Unit tests
     #Job's steps
     steps:
@@ -29,7 +28,7 @@ jobs:
         run: mvn -B test
 
   build:
-
+    runs-on: ubuntu-latestgit 
     steps:
       - uses: actions/checkout@v3
      #Set up JDK 8
