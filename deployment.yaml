@@ -6,7 +6,7 @@ metadata:
     app: petclinic-dep
   name: petclinic-dep
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: petclinic-dep
@@ -21,7 +21,24 @@ spec:
       - image: petclinic:latest
         name: petclinic-image
         imagePullPolicy: Never
-        port: 8080
+        ports: 
+          - containerPort: 8080
+        env:
+        - name: SPRING_DATASOURCE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: MYSQL_ACS
+        - name: SPRING_DATASOURCE_URL
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: MYSQL_URL
+        - name: SPRING_DATASOURCE_password
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: MYSQL_ACS
         resources: {}
       
 status: {}
